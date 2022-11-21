@@ -1,16 +1,10 @@
 <?php 
 
-class Titulo_model extends CI_Model {
+class Faq_model extends CI_Model {
 
-    public function getTitulos()
+    public function getFaqs()
     {
-        $query = $query = $this->db->query("SELECT titulo.*, lop.lop FROM titulos AS titulo 
-            INNER JOIN lops AS lop
-                ON titulo.lop_id = lop.id
-            WHERE data_previsao_pagamento >= current_date -30
-                AND valor > 1 
-                --AND situacao in ('A', 'PR') 
-                AND lop.id in ('4986392','509613718','533570479', '535608704', '98154792', '535608791')");
+        $query = $query = $this->db->query("SELECT * FROM faq;");
         return $query->result();
     }
 

@@ -44,6 +44,18 @@
                 </td>
             </tr>
 
+            <tr>
+                <td class="text-start">04</td>
+                <td class="text-start">Verifica taxas dos cartões</td>
+                <td class="text-start"><span class="badge bg-success">Ativo</span></td>
+                <td class="text-start">
+                <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#verifica_taxas_cartoes_modal">
+                <i class="fa-solid fa-square-arrow-up-right"></i>
+                    Executar
+                </button>
+                </td>
+            </tr>
+
         <tfoot>
             <tr>
                 <th>id</th>
@@ -57,6 +69,8 @@
     <?php $this->load->view('rotinas/modal/alterar_lops_modal')?>
     <?php $this->load->view('rotinas/modal/alterar_situacao_titulo_modal')?>
     <?php $this->load->view('rotinas/modal/liberar_pedido_aprovacao_modal')?>
+    <?php $this->load->view('rotinas/modal/verifica_taxas_cartoes_modal')?>
+    
 
 <script>
     $(document).ready(function () {

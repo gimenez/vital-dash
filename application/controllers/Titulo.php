@@ -16,11 +16,11 @@ class Titulo extends CI_Controller {
 		$sequencia = $this->posTitulosValidate($_POST['inputSequenciaTitulo']);
 	
 		if ( !$titulo ){
-			header('Location: http://192.168.22.79/ci');
+			header('Location: http://192.168.22.79/vital-dash');
 		}
 
 		if (!$situacao){
-			header('Location: http://192.168.22.79/ci');
+			header('Location: http://192.168.22.79/vital-dash');
 			return false;
 		}
 
@@ -29,7 +29,7 @@ class Titulo extends CI_Controller {
 		$result = $this->titulo_model->updateSituacao($titulo, $sequencia, $situacao);
 
 		
-		header('Location: http://192.168.22.79/ci');
+		header('Location: http://192.168.22.79/vital-dash');
 		return false;
 	
 

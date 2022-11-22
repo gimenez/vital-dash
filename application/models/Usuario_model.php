@@ -11,14 +11,14 @@ class Usuario_model extends CI_Model {
                             DP.documento, P.situacao,
                             CS.contrato_servicos AS contrato_servicos,
                             CS.situacao_contrato AS situacao_contrato
-                        FROM documentos_pessoas AS DP 
-                        JOIN pessoas P ON DP.pessoa_id = P.ID 
-                        LEFT JOIN contratos_servicos cs  ON cs.contratante_id = P.ID 
-                        WHERE tipo_documento_id = 580
-                        AND CHAR_LENGTH(documento)='11'
-                        AND contratos_parceiro_id  IN ('468335894')
-                        --AND cs.contratante_id = 542700974
-                        LIMIT 25";
+                                FROM documentos_pessoas AS DP 
+                                JOIN pessoas P ON DP.pessoa_id = P.ID 
+                                LEFT JOIN contratos_servicos cs  ON cs.contratante_id = P.ID 
+                                WHERE tipo_documento_id = 580
+                                AND CHAR_LENGTH(documento)='11'
+                                AND contratos_parceiro_id  IN ('468335894')
+                                --AND cs.contratante_id = 542700974
+                                LIMIT 25";
         $query = $this->db->query($query);
         return $query->result();
     }

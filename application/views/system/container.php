@@ -19,7 +19,7 @@
                 <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#rotinas" type="button" role="tab" aria-controls="messages" aria-selected="false">Rotinas</button>
             </li>
         </ul>
-
+        <?php echo $this->message->show();?>
         <div class="tab-content">
             <div class="tab-pane active" id="carteira" role="tabpanel" aria-labelledby="home-tab">
                 <?php $this->load->view('carteira/home')?>

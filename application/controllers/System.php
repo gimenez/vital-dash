@@ -6,7 +6,8 @@ class System extends CI_Controller {
 	{
         $data['titulos'] = $this->getTitulos();
         $data['aderencias'] = $this->getAderencias();
-        // $data['faqs'] = $this->getFaqs();
+        $data['faqs'] = $this->getFaqs();
+        $data['taxas'] = $this->getTaxasCartoes();
 		$this->load->view('system/container', $data);
 	}
 
@@ -28,4 +29,9 @@ class System extends CI_Controller {
         return $result = $this->faq_model->getFaqs();
     }
 
+    public function getTaxasCartoes()
+    {
+        $this->load->model('titulo_model');
+        return $result = $this->titulo_model->getTaxasCartoes();
+    }
 }

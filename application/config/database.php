@@ -73,37 +73,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
-// $db['default'] = array(
-// 	'dsn'	   => '',
-// 	'hostname' => 'pgsql:host=localhost;dbname=postgres',
-// 	'schema'   => 'teste',
-// 	'username' => 'postgres',
-// 	'port'     => 5432,
-// 	'password' => '123456',
-// 	'database' => 'postgres',
-// 	'dbdriver' => 'pdo',
-// 	'dbprefix' => '',
-// 	'pconnect' => FALSE,
-// 	'db_debug' => (ENVIRONMENT !== 'production'),
-// 	'cache_on' => FALSE,
-// 	'cachedir' => '',
-// 	'char_set' => 'utf8',
-// 	'dbcollat' => 'utf8_general_ci',
-// 	'swap_pre' => '',
-// 	'encrypt' => FALSE,
-// 	'compress' => FALSE,
-// 	'stricton' => FALSE,
-// 	'failover' => array(),
-// 	'save_queries' => TRUE
-// );
-
 $db['default'] = array(
 	'dsn'	   => '',
-	'hostname' => 'pgsql:host=172.16.0.33;dbname=sgprc',
-	'schema'   => 'public',
+	'hostname' => 'pgsql:host=localhost;dbname=postgres',
+	'schema'   => 'teste',
 	'username' => 'postgres',
 	'port'     => 5432,
-	'password' => 'phxao&02',
+	'password' => '123456',
 	'database' => 'postgres',
 	'dbdriver' => 'pdo',
 	'dbprefix' => '',
@@ -120,3 +96,27 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
+// $db['default'] = array(
+// 	'dsn'	   => '',
+// 	'hostname' => 'pgsql:host=172.16.0.33;dbname=sgprc',
+// 	'schema'   => 'public',
+// 	'username' => 'postgres',
+// 	'port'     => 5432,
+// 	'password' => 'phxao&02',
+// 	'database' => 'postgres',
+// 	'dbdriver' => 'pdo',
+// 	'dbprefix' => '',
+// 	'pconnect' => FALSE,
+// 	'db_debug' => (ENVIRONMENT !== 'production'),
+// 	'cache_on' => FALSE,
+// 	'cachedir' => '',
+// 	'char_set' => 'utf8',
+// 	'dbcollat' => 'utf8_general_ci',
+// 	'swap_pre' => '',
+// 	'encrypt' => FALSE,
+// 	'compress' => FALSE,
+// 	'stricton' => FALSE,
+// 	'failover' => array(),
+// 	'save_queries' => TRUE
+// );

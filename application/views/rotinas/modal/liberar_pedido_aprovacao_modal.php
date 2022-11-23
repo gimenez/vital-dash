@@ -9,11 +9,11 @@
       </div>
       <div class="modal-body">
 
-        <form name="formFile" action="<?= base_url('titulo/alterSituacao')?>" method="post" enctype='multipart/form-data' class="was-validated">
+        <form name="formFile" action="<?= base_url('rotinas/liberaPedidoParaAprovacao')?>" method="post" enctype='multipart/form-data' class="was-validated">
   
             <div class="input-group mb-3 was-validated">
                 <span class="input-group-text" id="addon-wrapping">Número do pedido:</span>
-                <input type="text" name="inputNumeroTitulo" required class="form-control">
+                <input type="text" name="inputNumero" required class="form-control">
             </div>
         
             <div class="modal-footer">

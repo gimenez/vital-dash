@@ -15,8 +15,9 @@ class Usuario_model extends CI_Model {
                                 JOIN pessoas P ON DP.pessoa_id = P.ID 
                                 LEFT JOIN contratos_servicos cs  ON cs.contratante_id = P.ID 
                                 WHERE tipo_documento_id = 580
-                                AND CHAR_LENGTH(documento)='11'
-                                AND contratos_parceiro_id  IN ('468335894')
+                                and dp.pessoa_id = 542077361
+                               -- AND CHAR_LENGTH(documento)='11'
+                               -- AND contratos_parceiro_id  IN ('468335894')
                                 --AND cs.contratante_id = 542700974
                                 LIMIT 25";
         $query = $this->db->query($query);
@@ -38,11 +39,9 @@ class Usuario_model extends CI_Model {
         $this->db->where('pessoa_id', $idPessoa);
         $this->db->delete('documentos_pessoas');
 
-        /**
-         * Exclui primeiro tabela clientes
-         */
+
         $this->db->where('pessoa_id', $idPessoa);
-        $this->db->delete('pessoas_contratos');
+        $this->db->delete('categorias_pessoas');
         
         /**
          * Exclui primeiro tabela clientes
@@ -105,8 +104,16 @@ class Usuario_model extends CI_Model {
     public function updatePessoasContatos($idAntigo, $idNovo)
     {
         $this->db->set('pessoa_id', $idAntigo);
+        $this->db->set('pessoa_representada_id', $idAntigo);
         $this->db->where('pessoa_id', $idNovo);
+        $this->db->where('pessoa_id =','pessoa_representada_id');
+        $this->db->update('pessoas_contatos');
+
+        $this->db->set('pessoa_id', $idAntigo);
+        $this->db->where('pessoa_id', $idNovo);
+        $this->db->where('pessoa_id !=','pessoa_representada_id');
         return $this->db->update('pessoas_contatos');
+        
     }
 
     /**
@@ -122,6 +129,7 @@ class Usuario_model extends CI_Model {
     public function updatePedidos($idAntigo, $idNovo)
     {
         $this->db->set('cliente_id', $idAntigo);
+        $this->db->set('grupo_cliente_id', $idAntigo);
         $this->db->where('cliente_id', $idNovo);
         return $this->db->update('pedidos');
     }
@@ -165,15 +173,15 @@ class Usuario_model extends CI_Model {
      */
     public function getPessoaContratosByIdPessoa($idPessoa)
     {
-        return $this->db->where('pessoa_id', $idPessoa)
+        return $this->db->where('pessoa', $idPessoa)
                         ->get('pessoas_contratos')
                         ->result();
     }
 
     public function updatePessoaContratos($idAntigo, $idNovo)
     {
-        $this->db->set('pessoa_id', $idAntigo);
-        $this->db->where('pessoa_id', $idNovo);
+        $this->db->set('pessoa', $idAntigo);
+        $this->db->where('pessoa', $idNovo);
         return $this->db->update('pessoas_contratos');
     }
 
@@ -295,6 +303,23 @@ class Usuario_model extends CI_Model {
         $this->db->set('pessoa_id', $idAntigo);
         $this->db->where('pessoa_id', $idNovo);
         return $this->db->update('caracteristicas_pessoas');
+    }
+
+     /**
+     * Trasações de integração
+     */
+    public function getTransacoesDeIntegracaoByIdPessoa($idPessoa)
+    {
+         return $this->db->where('sacado_id', $idPessoa)
+                        ->get('transacoes_integracao')
+                        ->result();
+    }
+
+    public function updateTransacoesDeIntegracao($idAntigo, $idNovo)
+    {
+        $this->db->set('sacado_id', $idAntigo);
+        $this->db->where('sacado_id', $idNovo);
+        return $this->db->update('transacoes_integracao');
     }
 
     public function updatePessoas($idAntigo)

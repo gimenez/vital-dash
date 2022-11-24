@@ -38,7 +38,6 @@ class Usuario extends CI_Controller {
 
 
             $idNovo = $result->p_id;
-            
 
             /**
              * Verifica se existe registros com formatação
@@ -55,6 +54,7 @@ class Usuario extends CI_Controller {
                 $this->usuario_model->updatePessoas($idNovo);
                 
             }else{  
+                
                 if (!isset($documentoAntigo[0]->pessoa_id)) {
                     return;
                 }
@@ -71,6 +71,7 @@ class Usuario extends CI_Controller {
                         $this->usuario_model->updateContatos($idAntigo, $idNovo);
                     }
                 
+
                 /**
                  * Busca Pessoas Contato
                  */
@@ -79,16 +80,16 @@ class Usuario extends CI_Controller {
                     if ( count($pessoasContatos) > 0 ) {
                         $this->usuario_model->updatePessoasContatos($idAntigo, $idNovo);
                     }
-
+                   
                 /**
                  * Busca Pedidos
                  */
                 $pedidos = $this->usuario_model->getPedidosByIdPessoa($idNovo);
-
+                
                     if ( count($pedidos) > 0 ) {
                         $this->usuario_model->updatePedidos($idAntigo, $idNovo);
                     }
-
+                
                 /**
                  * Busca Pedidos Pessoas
                  */
@@ -97,12 +98,10 @@ class Usuario extends CI_Controller {
                     if ( count($pedidosPessoas) > 0 ) {
                         $this->usuario_model->updatePedidosPessoas($idAntigo, $idNovo);
                     }
-
                 /**
                  * Busca Contratos Serviços
                  */
                 $contratoServicos = $this->usuario_model->getContratoServicosByIdPessoa($idNovo);
-                    
                     if ( count($contratoServicos) > 0 ) {
                         $this->usuario_model->updateContratoServicos($idAntigo, $idNovo);
                     }
@@ -110,15 +109,17 @@ class Usuario extends CI_Controller {
                  /**
                  * Busca Pessoas Contratos
                  */
+               
                 $pessoasContratos = $this->usuario_model->getContratoServicosByIdPessoa($idNovo);
+            
 
                     if ( count($pessoasContratos) > 0 ) {
                         $this->usuario_model->updatePessoaContratos($idAntigo, $idNovo);
                     }
-
                 /**
                  * Busca titulos
                  */
+            
                 $titulos = $this->usuario_model->getTitulosByIdPessoa($idNovo);
 
                     if ( count($titulos) > 0  ) {
@@ -129,15 +130,15 @@ class Usuario extends CI_Controller {
                  * Busca Cartoes Pessoas
                  */
                 $cartoesPessoas = $this->usuario_model->getCartoesPessoasByIdPessoa($idNovo);
-
-                    if ( count($cartoesPessoas) > 0 ) {
-                        $this->usuario_model->updateCartoesPessoas($idAntigo, $idNovo);
-                    }
+                if ( count($cartoesPessoas) > 0 ) {
+                    $this->usuario_model->updateCartoesPessoas($idAntigo, $idNovo);
+                }
 
                 /**
                  * Busca Dados Pessoas
                  */
                 $dadosPessoas = $this->usuario_model->getDadosPessoasByIdPessoa($idNovo);
+
 
                     if ( count($dadosPessoas ) > 0 ) {
                         $this->usuario_model->updateDadosPessoas($idAntigo, $idNovo);
@@ -148,7 +149,7 @@ class Usuario extends CI_Controller {
                  */
                 $arquivosAnexosPessoas = $this->usuario_model->getArquivosAnexosPessoasByIdPessoa($idNovo);
 
-                    if ( count($arquivosAnexosPessoas ) > 0 ) {
+                if ( count($arquivosAnexosPessoas ) > 0 ) {
                         $this->usuario_model->updateArquivosAnexosPessoas($idAntigo, $idNovo);
                     }
 
@@ -165,10 +166,10 @@ class Usuario extends CI_Controller {
                  * Endereços
                  */
                 $enderecos = $this->usuario_model->getEnderecosByIdPessoa($idNovo);
-
-                    if ( count($enderecos ) > 0  ) {
-                        $this->usuario_model->updateEnderecos($idAntigo, $idNovo);
-                    }
+                
+                if ( count($enderecos ) > 0  ) {
+                    $this->usuario_model->updateEnderecos($idAntigo, $idNovo);
+                }
 
                 /**
                  * Caracteristicas Pessoas
@@ -178,8 +179,16 @@ class Usuario extends CI_Controller {
                     if ( count($caracteristicasPessoas ) > 0 ) {
                         $this->usuario_model->updateCaracteristicasPessoas($idAntigo, $idNovo);
                     }
-                
 
+                /**
+                 * Trasações de integração
+                 */
+                $trasacoesDeIntegracao = $this->usuario_model->getTransacoesDeIntegracaoByIdPessoa($idNovo);
+
+                if ( count($trasacoesDeIntegracao ) > 0 ) {
+                    $this->usuario_model->updateTransacoesDeIntegracao($idAntigo, $idNovo);
+                }
+                
                 /**
                  * Delete id 
                  */
